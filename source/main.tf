@@ -2,8 +2,10 @@ locals {
   eu_west_1_buckets = { for k, v in var.replicas : k => v if v.region == "eu-west-1" }
   eu_west_2_buckets = { for k, v in var.replicas : k => v if v.region == "eu-west-2" }
 
-  all_buckets = merge({ for k, v in aws_s3_bucket.destination_eu_west_1 : k => { bucket_arn = v.arn } },
-  { for k, v in aws_s3_bucket.destination_eu_west_2 : k => { bucket_arn = v.arn } })
+  all_buckets = merge(
+    aws_s3_bucket.destination_eu_west_1,
+    aws_s3_bucket.destination_eu_west_2
+  )
 }
 
 provider "aws" {
@@ -85,7 +87,7 @@ resource "aws_iam_policy" "replication_destination" {
         "s3:ReplicateTags"
       ],
       "Effect": "Allow",
-      "Resource": "${each.value.bucket_arn}/*"
+      "Resource": "${each.value.arn}/*"
     }
   ]
 }
@@ -150,7 +152,7 @@ resource "aws_s3_bucket" "source" {
         filter {
         }
         destination {
-          bucket        = rules.value["bucket_arn"]
+          bucket        = rules.value["arn"]
           storage_class = "STANDARD"
         }
       }

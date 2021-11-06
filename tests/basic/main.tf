@@ -19,6 +19,10 @@ module "basic_replica" {
 }
 
 
-output "buckets"{
-    value = module.basic_replica.buckets
+output "replica_buckets"{
+    value = module.basic_replica.replica_buckets
+}
+
+output "source_bucket" {
+  value = module.basic_replica.source_bucket  
 }
