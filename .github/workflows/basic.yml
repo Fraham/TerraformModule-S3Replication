@@ -20,12 +20,9 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: ./tests/basic/
 
     steps:
-    - name: change directory
-      run: |
-        ls
-        cd ./tests/basic/
 
     - name: Checkout
       uses: actions/checkout@v2
