@@ -23,7 +23,9 @@ jobs:
 
     steps:
     - name: change directory
-      run: cd tests/basic/
+      run: |
+        ls
+        cd ./tests/basic/
 
     - name: Checkout
       uses: actions/checkout@v2
