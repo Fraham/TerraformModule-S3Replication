@@ -15,7 +15,7 @@ module "basic_replica" {
     "replica-2" = {
       bucket_name = "gpye-replica-2"
       region      = "eu-west-2"
-      rules       = [
+      rules = [
         {
           destination = {
             storage_class = "STANDARD"
