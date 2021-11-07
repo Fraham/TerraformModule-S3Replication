@@ -15,11 +15,10 @@ locals {
         { priority = "${index(keys(local.all_buckets), bk)}${rk}" },
         { status = "Enabled" },
         rb,
-        { destination = merge({bucket = bv.s3_bucket_arn}, lookup(rb, "destination", null)) }
+        { destination = merge({ bucket = bv.s3_bucket_arn }, lookup(rb, "destination", null)) }
       )
     ]
-    ]
-  )
+  ])
 }
 
 provider "aws" {
@@ -136,26 +135,19 @@ module "destination_eu_west_1" {
   bucket        = each.value.bucket_name
   bucket_prefix = lookup(each.value, "bucket_prefix", null)
 
-  acl = var.acl
+  acl                 = lookup(each.value, "acl", var.acl)
+  tags                = lookup(each.value, "tags", var.tags)
+  force_destroy       = lookup(each.value, "force_destroy", var.force_destroy)
+  acceleration_status = lookup(each.value, "acceleration_status", var.acceleration_status)
+  request_payer       = lookup(each.value, "request_payer", var.request_payer)
 
-  tags                = var.tags
-  force_destroy       = var.force_destroy
-  acceleration_status = var.acceleration_status
-  request_payer       = var.request_payer
-
-  website = var.website
-
-  cors_rule = var.cors_rule
-
-  logging = var.logging
-
-  grant = var.grant
-
-  lifecycle_rule = var.lifecycle_rule
-
-  server_side_encryption_configuration = var.server_side_encryption_configuration
-
-  object_lock_configuration = var.object_lock_configuration
+  website                              = lookup(each.value, "website", var.website)
+  cors_rule                            = lookup(each.value, "cors_rule", var.cors_rule)
+  logging                              = lookup(each.value, "logging", var.logging)
+  grant                                = lookup(each.value, "grant", var.grant)
+  lifecycle_rule                       = lookup(each.value, "lifecycle_rule", var.lifecycle_rule)
+  server_side_encryption_configuration = lookup(each.value, "server_side_encryption_configuration", var.server_side_encryption_configuration)
+  object_lock_configuration            = lookup(each.value, "object_lock_configuration", var.object_lock_configuration)
 }
 
 module "destination_eu_west_2" {
@@ -174,26 +166,19 @@ module "destination_eu_west_2" {
   bucket        = each.value.bucket_name
   bucket_prefix = lookup(each.value, "bucket_prefix", null)
 
-  acl = var.acl
+  acl                 = lookup(each.value, "acl", var.acl)
+  tags                = lookup(each.value, "tags", var.tags)
+  force_destroy       = lookup(each.value, "force_destroy", var.force_destroy)
+  acceleration_status = lookup(each.value, "acceleration_status", var.acceleration_status)
+  request_payer       = lookup(each.value, "request_payer", var.request_payer)
 
-  tags                = var.tags
-  force_destroy       = var.force_destroy
-  acceleration_status = var.acceleration_status
-  request_payer       = var.request_payer
-
-  website = var.website
-
-  cors_rule = var.cors_rule
-
-  logging = var.logging
-
-  grant = var.grant
-
-  lifecycle_rule = var.lifecycle_rule
-
-  server_side_encryption_configuration = var.server_side_encryption_configuration
-
-  object_lock_configuration = var.object_lock_configuration
+  website                              = lookup(each.value, "website", var.website)
+  cors_rule                            = lookup(each.value, "cors_rule", var.cors_rule)
+  logging                              = lookup(each.value, "logging", var.logging)
+  grant                                = lookup(each.value, "grant", var.grant)
+  lifecycle_rule                       = lookup(each.value, "lifecycle_rule", var.lifecycle_rule)
+  server_side_encryption_configuration = lookup(each.value, "server_side_encryption_configuration", var.server_side_encryption_configuration)
+  object_lock_configuration            = lookup(each.value, "object_lock_configuration", var.object_lock_configuration)
 }
 
 module "source" {
