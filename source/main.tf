@@ -131,6 +131,7 @@ module "destination_eu_west_1" {
   }
 
   bucket = each.value.bucket_name
+  bucket_prefix = lookup(each.value, "bucket_prefix", null)
 
   acl = var.acl
 
@@ -168,6 +169,7 @@ module "destination_eu_west_2" {
   }
 
   bucket = each.value.bucket_name
+  bucket_prefix = lookup(each.value, "bucket_prefix", null)
 
   acl = var.acl
 
