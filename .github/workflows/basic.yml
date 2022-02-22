@@ -45,6 +45,13 @@ jobs:
     - name: Actual Hash
       run: echo ${{ hashFiles('**/basic_plan_actual.txt')}}
 
+    - name: Archive actual plan
+      uses: actions/upload-artifact@v2
+      with:
+        name: plan
+        path: basic_plan_actual.txt
+
+
     - name: Actual cat
       run: cat basic_plan_actual.txt
 
