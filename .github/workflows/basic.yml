@@ -45,6 +45,9 @@ jobs:
     - name: Actual Hash
       run: echo ${{ hashFiles('**/basic_plan_actual.txt')}}
 
+    - name: Actual cat
+      run: cat basic_plan_actual.txt
+
     - name: A/B Check
       if: ${{ hashFiles('**/basic_plan_expected.txt') !=  hashFiles('**/basic_plan_actual.txt') }}
       uses: actions/github-script@v3
