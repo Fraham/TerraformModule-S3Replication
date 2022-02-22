@@ -49,7 +49,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: plan
-        path: basic_plan_actual.txt
+        path: /tests/basic/basic_plan_actual.txt
 
 
     - name: Actual cat
