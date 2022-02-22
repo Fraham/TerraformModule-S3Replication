@@ -5,15 +5,15 @@ provider "aws" {
 module "basic_replica" {
   source = "../../source/"
 
-  bucket_name = "gpye-source"
+  bucket_name = "fraham-source"
   replicas = {
     "replica-1" = {
-      bucket_name = "gpye-replica-1"
+      bucket_name = "fraham-replica-1"
       region      = "eu-west-1"
       rules       = []
     }
     "replica-2" = {
-      bucket_name = "gpye-replica-2"
+      bucket_name = "fraham-replica-2"
       region      = "eu-west-2"
       rules = [
         {

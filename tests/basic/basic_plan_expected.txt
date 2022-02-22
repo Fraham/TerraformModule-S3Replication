@@ -9,7 +9,7 @@ Terraform will perform the following actions:
   + resource "aws_iam_policy" "replication" {
       + arn       = (known after apply)
       + id        = (known after apply)
-      + name      = "gpye-source-replication"
+      + name      = "fraham-source-replication"
       + path      = "/"
       + policy    = (known after apply)
       + policy_id = (known after apply)
@@ -20,7 +20,7 @@ Terraform will perform the following actions:
   + resource "aws_iam_policy" "replication_destination" {
       + arn       = (known after apply)
       + id        = (known after apply)
-      + name      = "gpye-source-replication-destination-replica-1"
+      + name      = "fraham-source-replication-destination-replica-1"
       + path      = "/"
       + policy    = (known after apply)
       + policy_id = (known after apply)
@@ -31,7 +31,7 @@ Terraform will perform the following actions:
   + resource "aws_iam_policy" "replication_destination" {
       + arn       = (known after apply)
       + id        = (known after apply)
-      + name      = "gpye-source-replication-destination-replica-2"
+      + name      = "fraham-source-replication-destination-replica-2"
       + path      = "/"
       + policy    = (known after apply)
       + policy_id = (known after apply)
@@ -61,7 +61,7 @@ Terraform will perform the following actions:
       + id                    = (known after apply)
       + managed_policy_arns   = (known after apply)
       + max_session_duration  = 3600
-      + name                  = "gpye-source-replication"
+      + name                  = "fraham-source-replication"
       + name_prefix           = (known after apply)
       + path                  = "/"
       + tags_all              = (known after apply)
@@ -77,21 +77,21 @@ Terraform will perform the following actions:
   + resource "aws_iam_role_policy_attachment" "replication" {
       + id         = (known after apply)
       + policy_arn = (known after apply)
-      + role       = "gpye-source-replication"
+      + role       = "fraham-source-replication"
     }
 
   # module.basic_replica.aws_iam_role_policy_attachment.replication_destination["replica-1"] will be created
   + resource "aws_iam_role_policy_attachment" "replication_destination" {
       + id         = (known after apply)
       + policy_arn = (known after apply)
-      + role       = "gpye-source-replication"
+      + role       = "fraham-source-replication"
     }
 
   # module.basic_replica.aws_iam_role_policy_attachment.replication_destination["replica-2"] will be created
   + resource "aws_iam_role_policy_attachment" "replication_destination" {
       + id         = (known after apply)
       + policy_arn = (known after apply)
-      + role       = "gpye-source-replication"
+      + role       = "fraham-source-replication"
     }
 
   # module.basic_replica.module.destination_eu_west_1["replica-1"].aws_s3_bucket.this[0] will be created
@@ -99,7 +99,7 @@ Terraform will perform the following actions:
       + acceleration_status         = (known after apply)
       + acl                         = "private"
       + arn                         = (known after apply)
-      + bucket                      = "gpye-replica-1"
+      + bucket                      = "fraham-replica-1"
       + bucket_domain_name          = (known after apply)
       + bucket_regional_domain_name = (known after apply)
       + force_destroy               = false
@@ -132,7 +132,7 @@ Terraform will perform the following actions:
       + acceleration_status         = (known after apply)
       + acl                         = "private"
       + arn                         = (known after apply)
-      + bucket                      = "gpye-replica-2"
+      + bucket                      = "fraham-replica-2"
       + bucket_domain_name          = (known after apply)
       + bucket_regional_domain_name = (known after apply)
       + force_destroy               = false
@@ -165,7 +165,7 @@ Terraform will perform the following actions:
       + acceleration_status         = (known after apply)
       + acl                         = "private"
       + arn                         = (known after apply)
-      + bucket                      = "gpye-source"
+      + bucket                      = "fraham-source"
       + bucket_domain_name          = (known after apply)
       + bucket_regional_domain_name = (known after apply)
       + force_destroy               = false
