@@ -39,6 +39,12 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -no-color > basic_plan_actual.txt
 
+    - name: Expected Hash
+      run: echo ${{ hashFiles('**/basic_plan_expected.txt')}}
+
+    - name: Actual Hash
+      run: echo ${{ hashFiles('**/basic_plan_actual.txt')}}
+
     - name: A/B Check
       if: ${{ hashFiles('**/basic_plan_expected.txt') !=  hashFiles('**/basic_plan_actual.txt') }}
       uses: actions/github-script@v3
