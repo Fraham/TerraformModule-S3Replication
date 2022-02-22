@@ -1,3 +1,12 @@
+function replaceRegion {
+  param (
+    $region,
+    $text
+  )
+
+  return ($text -replace "{{REGION}}", $region) -replace "{{REGION_}}", ($region -replace "-", "_")
+}
+
 $providerTemplate = '
 provider "aws" {
     region = "{{REGION}}"
@@ -65,10 +74,10 @@ if ($regions.Count -eq 0) {
 }
 
 foreach ($region in $regions) {
-    $providers += $providerTemplate -replace "{{REGION}}", $region
-    $bucketLists += ($bucketListTemplate -replace "{{REGION}}", $region) -replace "{{REGION_}}", ($region -replace "-", "_")
-    $regionBuckets += $regionBucketsTemplate -replace "{{REGION_}}", ($region -replace "-", "_")
-    $buckets += ($bucketTemplate -replace "{{REGION}}", $region) -replace "{{REGION_}}", ($region -replace "-", "_")    
+    $providers += replaceRegion -text $providerTemplate -region $region
+    $bucketLists += replaceRegion -text $bucketListTemplate -region $region
+    $regionBuckets += replaceRegion -text $regionBucketsTemplate -region $region
+    $buckets += replaceRegion -text $bucketTemplate -region $region    
 }
 
 $fileTemplate = $fileTemplate -replace "{{BUCKET_LISTS}}", $bucketLists
