@@ -47,7 +47,7 @@ jobs:
         path: tests/basic/plan_actual.txt
 
     - name: Expected Plan
-      if: ${{ hashFiles('**/plan_expected.txt') !=  hashFiles('**/plan_actual.txt') }}
+      if: ${{ hashFiles('tests/basic/plan_expected.txt') !=  hashFiles('tests/basic/plan_actual.txt') }}
       uses: actions/github-script@v3
       with:
         script: |
@@ -92,7 +92,7 @@ jobs:
         path: tests/regions_5/plan_actual.txt
 
     - name: Expected Plan
-      if: ${{ hashFiles('**/plan_expected.txt') !=  hashFiles('**/plan_actual.txt') }}
+      if: ${{ hashFiles('tests/regions_5/plan_expected.txt') !=  hashFiles('tests/regions_5/plan_actual.txt') }}
       uses: actions/github-script@v3
       with:
         script: |

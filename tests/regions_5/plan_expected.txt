@@ -148,6 +148,72 @@ Terraform will perform the following actions:
       + role       = "fraham-source-replication"
     }
 
+  # module.basic_replica.module.destination_ap_south_1["replica-3"].aws_s3_bucket.this[0] will be created
+  + resource "aws_s3_bucket" "this" {
+      + acceleration_status         = (known after apply)
+      + acl                         = "private"
+      + arn                         = (known after apply)
+      + bucket                      = "fraham-replica-3"
+      + bucket_domain_name          = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + versioning {
+          + enabled    = true
+          + mfa_delete = false
+        }
+    }
+
+  # module.basic_replica.module.destination_ap_south_1["replica-3"].aws_s3_bucket_public_access_block.this[0] will be created
+  + resource "aws_s3_bucket_public_access_block" "this" {
+      + block_public_acls       = false
+      + block_public_policy     = false
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = false
+      + restrict_public_buckets = false
+    }
+
+  # module.basic_replica.module.destination_eu_north_1["replica-4"].aws_s3_bucket.this[0] will be created
+  + resource "aws_s3_bucket" "this" {
+      + acceleration_status         = (known after apply)
+      + acl                         = "private"
+      + arn                         = (known after apply)
+      + bucket                      = "fraham-replica-4"
+      + bucket_domain_name          = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + versioning {
+          + enabled    = true
+          + mfa_delete = false
+        }
+    }
+
+  # module.basic_replica.module.destination_eu_north_1["replica-4"].aws_s3_bucket_public_access_block.this[0] will be created
+  + resource "aws_s3_bucket_public_access_block" "this" {
+      + block_public_acls       = false
+      + block_public_policy     = false
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = false
+      + restrict_public_buckets = false
+    }
+
   # module.basic_replica.module.destination_eu_west_1["replica-1"].aws_s3_bucket.this[0] will be created
   + resource "aws_s3_bucket" "this" {
       + acceleration_status         = (known after apply)
@@ -214,73 +280,7 @@ Terraform will perform the following actions:
       + restrict_public_buckets = false
     }
 
-  # module.basic_replica.module.destination_eu_west_2["replica-3"].aws_s3_bucket.this[0] will be created
-  + resource "aws_s3_bucket" "this" {
-      + acceleration_status         = (known after apply)
-      + acl                         = "private"
-      + arn                         = (known after apply)
-      + bucket                      = "fraham-replica-3"
-      + bucket_domain_name          = (known after apply)
-      + bucket_regional_domain_name = (known after apply)
-      + force_destroy               = false
-      + hosted_zone_id              = (known after apply)
-      + id                          = (known after apply)
-      + region                      = (known after apply)
-      + request_payer               = (known after apply)
-      + tags_all                    = (known after apply)
-      + website_domain              = (known after apply)
-      + website_endpoint            = (known after apply)
-
-      + versioning {
-          + enabled    = true
-          + mfa_delete = false
-        }
-    }
-
-  # module.basic_replica.module.destination_eu_west_2["replica-3"].aws_s3_bucket_public_access_block.this[0] will be created
-  + resource "aws_s3_bucket_public_access_block" "this" {
-      + block_public_acls       = false
-      + block_public_policy     = false
-      + bucket                  = (known after apply)
-      + id                      = (known after apply)
-      + ignore_public_acls      = false
-      + restrict_public_buckets = false
-    }
-
-  # module.basic_replica.module.destination_eu_west_2["replica-4"].aws_s3_bucket.this[0] will be created
-  + resource "aws_s3_bucket" "this" {
-      + acceleration_status         = (known after apply)
-      + acl                         = "private"
-      + arn                         = (known after apply)
-      + bucket                      = "fraham-replica-4"
-      + bucket_domain_name          = (known after apply)
-      + bucket_regional_domain_name = (known after apply)
-      + force_destroy               = false
-      + hosted_zone_id              = (known after apply)
-      + id                          = (known after apply)
-      + region                      = (known after apply)
-      + request_payer               = (known after apply)
-      + tags_all                    = (known after apply)
-      + website_domain              = (known after apply)
-      + website_endpoint            = (known after apply)
-
-      + versioning {
-          + enabled    = true
-          + mfa_delete = false
-        }
-    }
-
-  # module.basic_replica.module.destination_eu_west_2["replica-4"].aws_s3_bucket_public_access_block.this[0] will be created
-  + resource "aws_s3_bucket_public_access_block" "this" {
-      + block_public_acls       = false
-      + block_public_policy     = false
-      + bucket                  = (known after apply)
-      + id                      = (known after apply)
-      + ignore_public_acls      = false
-      + restrict_public_buckets = false
-    }
-
-  # module.basic_replica.module.destination_eu_west_2["replica-5"].aws_s3_bucket.this[0] will be created
+  # module.basic_replica.module.destination_us_east_1["replica-5"].aws_s3_bucket.this[0] will be created
   + resource "aws_s3_bucket" "this" {
       + acceleration_status         = (known after apply)
       + acl                         = "private"
@@ -303,7 +303,7 @@ Terraform will perform the following actions:
         }
     }
 
-  # module.basic_replica.module.destination_eu_west_2["replica-5"].aws_s3_bucket_public_access_block.this[0] will be created
+  # module.basic_replica.module.destination_us_east_1["replica-5"].aws_s3_bucket_public_access_block.this[0] will be created
   + resource "aws_s3_bucket_public_access_block" "this" {
       + block_public_acls       = false
       + block_public_policy     = false
