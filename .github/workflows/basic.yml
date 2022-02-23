@@ -7,10 +7,9 @@ on:
   pull_request:
 
 jobs:
-  terraform:
-    name: 'Terraform'
+  basic:
+    name: 'basic'
     runs-on: ubuntu-latest
-    environment: production
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -29,6 +28,8 @@ jobs:
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_wrapper: false
 
     - name: Terraform Init
       run: terraform init
@@ -37,4 +38,62 @@ jobs:
       run: terraform fmt
 
     - name: Terraform Plan
-      run: terraform plan
+      run: terraform plan -no-color > plan_actual.txt
+
+    - name: Archive actual plan
+      uses: actions/upload-artifact@v2
+      with:
+        name: basic-plan
+        path: tests/basic/plan_actual.txt
+
+    - name: Expected Plan
+      if: ${{ hashFiles('tests/basic/plan_expected.txt') !=  hashFiles('tests/basic/plan_actual.txt') }}
+      uses: actions/github-script@v3
+      with:
+        script: |
+            core.setFailed('Actual and expected outputs are not equivalent!')
+  regions_5:
+    name: 'regions_5'
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: eu-west-1
+      AWS_DEFAULT_OUTPUT: json
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./tests/regions_5/
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_wrapper: false
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Format
+      run: terraform fmt
+
+    - name: Terraform Plan
+      run: terraform plan -no-color > plan_actual.txt
+
+    - name: Archive actual plan
+      uses: actions/upload-artifact@v2
+      with:
+        name: regions_5-plan
+        path: tests/regions_5/plan_actual.txt
+
+    - name: Expected Plan
+      if: ${{ hashFiles('tests/regions_5/plan_expected.txt') !=  hashFiles('tests/regions_5/plan_actual.txt') }}
+      uses: actions/github-script@v3
+      with:
+        script: |
+            core.setFailed('Actual and expected outputs are not equivalent!')

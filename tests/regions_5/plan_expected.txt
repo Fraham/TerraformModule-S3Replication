@@ -1,0 +1,520 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.basic_replica.aws_iam_policy.replication will be created
+  + resource "aws_iam_policy" "replication" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "fraham-source-replication"
+      + path      = "/"
+      + policy    = (known after apply)
+      + policy_id = (known after apply)
+      + tags_all  = (known after apply)
+    }
+
+  # module.basic_replica.aws_iam_policy.replication_destination["replica-1"] will be created
+  + resource "aws_iam_policy" "replication_destination" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "fraham-source-replication-destination-replica-1"
+      + path      = "/"
+      + policy    = (known after apply)
+      + policy_id = (known after apply)
+      + tags_all  = (known after apply)
+    }
+
+  # module.basic_replica.aws_iam_policy.replication_destination["replica-2"] will be created
+  + resource "aws_iam_policy" "replication_destination" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "fraham-source-replication-destination-replica-2"
+      + path      = "/"
+      + policy    = (known after apply)
+      + policy_id = (known after apply)
+      + tags_all  = (known after apply)
+    }
+
+  # module.basic_replica.aws_iam_policy.replication_destination["replica-3"] will be created
+  + resource "aws_iam_policy" "replication_destination" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "fraham-source-replication-destination-replica-3"
+      + path      = "/"
+      + policy    = (known after apply)
+      + policy_id = (known after apply)
+      + tags_all  = (known after apply)
+    }
+
+  # module.basic_replica.aws_iam_policy.replication_destination["replica-4"] will be created
+  + resource "aws_iam_policy" "replication_destination" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "fraham-source-replication-destination-replica-4"
+      + path      = "/"
+      + policy    = (known after apply)
+      + policy_id = (known after apply)
+      + tags_all  = (known after apply)
+    }
+
+  # module.basic_replica.aws_iam_policy.replication_destination["replica-5"] will be created
+  + resource "aws_iam_policy" "replication_destination" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "fraham-source-replication-destination-replica-5"
+      + path      = "/"
+      + policy    = (known after apply)
+      + policy_id = (known after apply)
+      + tags_all  = (known after apply)
+    }
+
+  # module.basic_replica.aws_iam_role.replication will be created
+  + resource "aws_iam_role" "replication" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "s3.amazonaws.com"
+                        }
+                      + Sid       = ""
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "fraham-source-replication"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags_all              = (known after apply)
+      + unique_id             = (known after apply)
+
+      + inline_policy {
+          + name   = (known after apply)
+          + policy = (known after apply)
+        }
+    }
+
+  # module.basic_replica.aws_iam_role_policy_attachment.replication will be created
+  + resource "aws_iam_role_policy_attachment" "replication" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "fraham-source-replication"
+    }
+
+  # module.basic_replica.aws_iam_role_policy_attachment.replication_destination["replica-1"] will be created
+  + resource "aws_iam_role_policy_attachment" "replication_destination" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "fraham-source-replication"
+    }
+
+  # module.basic_replica.aws_iam_role_policy_attachment.replication_destination["replica-2"] will be created
+  + resource "aws_iam_role_policy_attachment" "replication_destination" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "fraham-source-replication"
+    }
+
+  # module.basic_replica.aws_iam_role_policy_attachment.replication_destination["replica-3"] will be created
+  + resource "aws_iam_role_policy_attachment" "replication_destination" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "fraham-source-replication"
+    }
+
+  # module.basic_replica.aws_iam_role_policy_attachment.replication_destination["replica-4"] will be created
+  + resource "aws_iam_role_policy_attachment" "replication_destination" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "fraham-source-replication"
+    }
+
+  # module.basic_replica.aws_iam_role_policy_attachment.replication_destination["replica-5"] will be created
+  + resource "aws_iam_role_policy_attachment" "replication_destination" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "fraham-source-replication"
+    }
+
+  # module.basic_replica.module.destination_ap_south_1["replica-3"].aws_s3_bucket.this[0] will be created
+  + resource "aws_s3_bucket" "this" {
+      + acceleration_status         = (known after apply)
+      + acl                         = "private"
+      + arn                         = (known after apply)
+      + bucket                      = "fraham-replica-3"
+      + bucket_domain_name          = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + versioning {
+          + enabled    = true
+          + mfa_delete = false
+        }
+    }
+
+  # module.basic_replica.module.destination_ap_south_1["replica-3"].aws_s3_bucket_public_access_block.this[0] will be created
+  + resource "aws_s3_bucket_public_access_block" "this" {
+      + block_public_acls       = false
+      + block_public_policy     = false
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = false
+      + restrict_public_buckets = false
+    }
+
+  # module.basic_replica.module.destination_eu_north_1["replica-4"].aws_s3_bucket.this[0] will be created
+  + resource "aws_s3_bucket" "this" {
+      + acceleration_status         = (known after apply)
+      + acl                         = "private"
+      + arn                         = (known after apply)
+      + bucket                      = "fraham-replica-4"
+      + bucket_domain_name          = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + versioning {
+          + enabled    = true
+          + mfa_delete = false
+        }
+    }
+
+  # module.basic_replica.module.destination_eu_north_1["replica-4"].aws_s3_bucket_public_access_block.this[0] will be created
+  + resource "aws_s3_bucket_public_access_block" "this" {
+      + block_public_acls       = false
+      + block_public_policy     = false
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = false
+      + restrict_public_buckets = false
+    }
+
+  # module.basic_replica.module.destination_eu_west_1["replica-1"].aws_s3_bucket.this[0] will be created
+  + resource "aws_s3_bucket" "this" {
+      + acceleration_status         = (known after apply)
+      + acl                         = "private"
+      + arn                         = (known after apply)
+      + bucket                      = "fraham-replica-1"
+      + bucket_domain_name          = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + versioning {
+          + enabled    = true
+          + mfa_delete = false
+        }
+    }
+
+  # module.basic_replica.module.destination_eu_west_1["replica-1"].aws_s3_bucket_public_access_block.this[0] will be created
+  + resource "aws_s3_bucket_public_access_block" "this" {
+      + block_public_acls       = false
+      + block_public_policy     = false
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = false
+      + restrict_public_buckets = false
+    }
+
+  # module.basic_replica.module.destination_eu_west_2["replica-2"].aws_s3_bucket.this[0] will be created
+  + resource "aws_s3_bucket" "this" {
+      + acceleration_status         = (known after apply)
+      + acl                         = "private"
+      + arn                         = (known after apply)
+      + bucket                      = "fraham-replica-2"
+      + bucket_domain_name          = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + versioning {
+          + enabled    = true
+          + mfa_delete = false
+        }
+    }
+
+  # module.basic_replica.module.destination_eu_west_2["replica-2"].aws_s3_bucket_public_access_block.this[0] will be created
+  + resource "aws_s3_bucket_public_access_block" "this" {
+      + block_public_acls       = false
+      + block_public_policy     = false
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = false
+      + restrict_public_buckets = false
+    }
+
+  # module.basic_replica.module.destination_us_east_1["replica-5"].aws_s3_bucket.this[0] will be created
+  + resource "aws_s3_bucket" "this" {
+      + acceleration_status         = (known after apply)
+      + acl                         = "private"
+      + arn                         = (known after apply)
+      + bucket                      = "fraham-replica-5"
+      + bucket_domain_name          = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + versioning {
+          + enabled    = true
+          + mfa_delete = false
+        }
+    }
+
+  # module.basic_replica.module.destination_us_east_1["replica-5"].aws_s3_bucket_public_access_block.this[0] will be created
+  + resource "aws_s3_bucket_public_access_block" "this" {
+      + block_public_acls       = false
+      + block_public_policy     = false
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = false
+      + restrict_public_buckets = false
+    }
+
+  # module.basic_replica.module.source.aws_s3_bucket.this[0] will be created
+  + resource "aws_s3_bucket" "this" {
+      + acceleration_status         = (known after apply)
+      + acl                         = "private"
+      + arn                         = (known after apply)
+      + bucket                      = "fraham-source"
+      + bucket_domain_name          = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + replication_configuration {
+          + role = (known after apply)
+
+          + rules {
+              + id       = "replica-10"
+              + priority = 0
+              + status   = "Enabled"
+
+              + destination {
+                  + bucket = (known after apply)
+                }
+
+              + filter {}
+            }
+          + rules {
+              + id       = "replica-20"
+              + priority = 10
+              + status   = "Enabled"
+
+              + destination {
+                  + bucket = (known after apply)
+                }
+
+              + filter {}
+            }
+          + rules {
+              + id       = "replica-30"
+              + priority = 20
+              + status   = "Enabled"
+
+              + destination {
+                  + bucket = (known after apply)
+                }
+
+              + filter {}
+            }
+          + rules {
+              + id       = "replica-40"
+              + priority = 30
+              + status   = "Enabled"
+
+              + destination {
+                  + bucket = (known after apply)
+                }
+
+              + filter {}
+            }
+          + rules {
+              + id       = "replica-50"
+              + priority = 40
+              + status   = "Enabled"
+
+              + destination {
+                  + bucket = (known after apply)
+                }
+
+              + filter {}
+            }
+        }
+
+      + versioning {
+          + enabled    = true
+          + mfa_delete = false
+        }
+    }
+
+  # module.basic_replica.module.source.aws_s3_bucket_public_access_block.this[0] will be created
+  + resource "aws_s3_bucket_public_access_block" "this" {
+      + block_public_acls       = false
+      + block_public_policy     = false
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = false
+      + restrict_public_buckets = false
+    }
+
+Plan: 25 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + all_rules       = [
+      + {
+          + destination = {
+              + bucket = (known after apply)
+            }
+          + id          = "replica-10"
+          + priority    = "00"
+          + status      = "Enabled"
+        },
+      + {
+          + destination = {
+              + bucket = (known after apply)
+            }
+          + id          = "replica-20"
+          + priority    = "10"
+          + status      = "Enabled"
+        },
+      + {
+          + destination = {
+              + bucket = (known after apply)
+            }
+          + id          = "replica-30"
+          + priority    = "20"
+          + status      = "Enabled"
+        },
+      + {
+          + destination = {
+              + bucket = (known after apply)
+            }
+          + id          = "replica-40"
+          + priority    = "30"
+          + status      = "Enabled"
+        },
+      + {
+          + destination = {
+              + bucket = (known after apply)
+            }
+          + id          = "replica-50"
+          + priority    = "40"
+          + status      = "Enabled"
+        },
+    ]
+  + replica_buckets = {
+      + replica-1 = {
+          + s3_bucket_arn                         = (known after apply)
+          + s3_bucket_bucket_domain_name          = (known after apply)
+          + s3_bucket_bucket_regional_domain_name = (known after apply)
+          + s3_bucket_hosted_zone_id              = (known after apply)
+          + s3_bucket_id                          = (known after apply)
+          + s3_bucket_region                      = (known after apply)
+          + s3_bucket_website_domain              = (known after apply)
+          + s3_bucket_website_endpoint            = (known after apply)
+        }
+      + replica-2 = {
+          + s3_bucket_arn                         = (known after apply)
+          + s3_bucket_bucket_domain_name          = (known after apply)
+          + s3_bucket_bucket_regional_domain_name = (known after apply)
+          + s3_bucket_hosted_zone_id              = (known after apply)
+          + s3_bucket_id                          = (known after apply)
+          + s3_bucket_region                      = (known after apply)
+          + s3_bucket_website_domain              = (known after apply)
+          + s3_bucket_website_endpoint            = (known after apply)
+        }
+      + replica-3 = {
+          + s3_bucket_arn                         = (known after apply)
+          + s3_bucket_bucket_domain_name          = (known after apply)
+          + s3_bucket_bucket_regional_domain_name = (known after apply)
+          + s3_bucket_hosted_zone_id              = (known after apply)
+          + s3_bucket_id                          = (known after apply)
+          + s3_bucket_region                      = (known after apply)
+          + s3_bucket_website_domain              = (known after apply)
+          + s3_bucket_website_endpoint            = (known after apply)
+        }
+      + replica-4 = {
+          + s3_bucket_arn                         = (known after apply)
+          + s3_bucket_bucket_domain_name          = (known after apply)
+          + s3_bucket_bucket_regional_domain_name = (known after apply)
+          + s3_bucket_hosted_zone_id              = (known after apply)
+          + s3_bucket_id                          = (known after apply)
+          + s3_bucket_region                      = (known after apply)
+          + s3_bucket_website_domain              = (known after apply)
+          + s3_bucket_website_endpoint            = (known after apply)
+        }
+      + replica-5 = {
+          + s3_bucket_arn                         = (known after apply)
+          + s3_bucket_bucket_domain_name          = (known after apply)
+          + s3_bucket_bucket_regional_domain_name = (known after apply)
+          + s3_bucket_hosted_zone_id              = (known after apply)
+          + s3_bucket_id                          = (known after apply)
+          + s3_bucket_region                      = (known after apply)
+          + s3_bucket_website_domain              = (known after apply)
+          + s3_bucket_website_endpoint            = (known after apply)
+        }
+    }
+  + source_bucket   = {
+      + s3_bucket_arn                         = (known after apply)
+      + s3_bucket_bucket_domain_name          = (known after apply)
+      + s3_bucket_bucket_regional_domain_name = (known after apply)
+      + s3_bucket_hosted_zone_id              = (known after apply)
+      + s3_bucket_id                          = (known after apply)
+      + s3_bucket_region                      = (known after apply)
+      + s3_bucket_website_domain              = (known after apply)
+      + s3_bucket_website_endpoint            = (known after apply)
+    }
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.

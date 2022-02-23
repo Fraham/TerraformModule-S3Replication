@@ -15,18 +15,22 @@ module "basic_replica" {
     "replica-2" = {
       bucket_name = "fraham-replica-2"
       region      = "eu-west-2"
-      rules = [
-        {
-          destination = {
-            storage_class = "STANDARD"
-          }
-        },
-        {
-          destination = {
-            storage_class = "GLACIER"
-          }
-        }
-      ]
+      rules       = []
+    }
+    "replica-3" = {
+      bucket_name = "fraham-replica-3"
+      region      = "ap-south-1"
+      rules       = []
+    }
+    "replica-4" = {
+      bucket_name = "fraham-replica-4"
+      region      = "eu-north-1"
+      rules       = []
+    }
+    "replica-5" = {
+      bucket_name = "fraham-replica-5"
+      region      = "us-east-1"
+      rules       = []
     }
   }
 }
