@@ -1,9 +1,11 @@
 variable "bucket_name" {
-  type = string
+  type        = string
+  description = "Name of the source bucket"
 }
 
 variable "replicas" {
-  type = map(any)
+  type        = map(any)
+  description = "Map of the replica buckets"
 }
 
 variable "bucket_prefix" {
@@ -127,6 +129,6 @@ variable "object_ownership" {
 }
 
 #optional_stuff
-  #replication_enabled
-    #either true or false
-    # default true
+#replication_enabled
+#either true or false
+# default true
