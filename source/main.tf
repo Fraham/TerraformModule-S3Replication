@@ -1,13 +1,13 @@
 locals {
   all_rules = flatten([
-    for bk, bv in local.all_buckets : [
-      for rk, rb in(length(lookup(var.replicas[bk], "rules", [])) > 0 ? var.replicas[bk].rules : [{}]) :
+    for region_buckets_key, region_buckets_value in local.all_buckets : [
+      for bucket_key, bucket_value in(length(lookup(var.replicas[region_buckets_key], "rules", [])) > 0 ? var.replicas[region_buckets_key].rules : [{}]) :
       merge(
-        { id = "${bk}${rk}" },
-        { priority = "${index(keys(local.all_buckets), bk)}${rk}" },
+        { id = "${region_buckets_key}${bucket_key}" },
+        { priority = "${index(keys(local.all_buckets), region_buckets_key)}${bucket_key}" },
         { status = "Enabled" },
-        rb,
-        { destination = merge({ bucket = bv.s3_bucket_arn }, lookup(rb, "destination", null)) }
+        bucket_value,
+        { destination = merge({ bucket = region_buckets_value.s3_bucket_arn }, lookup(bucket_value, "destination", null)) }
       )
     ]
   ])
@@ -54,7 +54,7 @@ resource "aws_iam_policy" "replication" {
       "Action": [
         "s3:GetObjectVersionForReplication",
         "s3:GetObjectVersionAcl",
-         "s3:GetObjectVersionTagging"
+        "s3:GetObjectVersionTagging"
       ],
       "Effect": "Allow",
       "Resource": [
@@ -109,33 +109,24 @@ module "source" {
   bucket_prefix = var.bucket_prefix
 
   versioning = {
-    enabled = true
+    enabled = true # replication requires versioning to be enabled
   }
 
-  acl = var.acl
-
-  tags                = var.tags
-  force_destroy       = var.force_destroy
-  acceleration_status = var.acceleration_status
-  request_payer       = var.request_payer
-
-  website = var.website
-
-  cors_rule = var.cors_rule
-
-  logging = var.logging
-
-  grant = var.grant
-
-  lifecycle_rule = var.lifecycle_rule
-
+  acl                                  = var.acl
+  tags                                 = var.tags
+  force_destroy                        = var.force_destroy
+  acceleration_status                  = var.acceleration_status
+  request_payer                        = var.request_payer
+  website                              = var.website
+  cors_rule                            = var.cors_rule
+  logging                              = var.logging
+  grant                                = var.grant
+  lifecycle_rule                       = var.lifecycle_rule
   server_side_encryption_configuration = var.server_side_encryption_configuration
-
-  object_lock_configuration = var.object_lock_configuration
+  object_lock_configuration            = var.object_lock_configuration
 
   replication_configuration = {
-    role = aws_iam_role.replication.arn
-
+    role  = aws_iam_role.replication.arn
     rules = local.all_rules
   }
 }
